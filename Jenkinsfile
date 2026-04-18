@@ -1,17 +1,11 @@
 pipeline {
-    agent {label 'java'}
+    agent { label 'java' }
 
-    // stages {
-    //     stage('Checkout') {
-    //         steps {
-    //             git 'https://github.com/vboxuser726/Checkov-jenkins.git'
-    //         }
-    //     }
-
+    stages {
         stage('Install Checkov') {
             steps {
                 sh '''
-                pip3 install --upgrade checkov
+                python3 -m pip install --upgrade checkov
                 '''
             }
         }
@@ -24,4 +18,4 @@ pipeline {
             }
         }
     }
-
+}
